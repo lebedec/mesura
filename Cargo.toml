@@ -1,9 +1,9 @@
 [package]
 name = "mesura"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 license = "MIT"
-description = "A metrics gathering library, Prometheus compatible"
+description = "A lightweight library for metrics gathering, Prometheus compatible"
 readme = "README.md"
 homepage = "https://github.com/lebedec/mesura"
 repository = "https://github.com/lebedec/mesura"
