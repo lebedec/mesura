@@ -225,6 +225,20 @@ impl Registry {
         }
         output
     }
+
+    pub fn encode_strings_report(&self) -> Vec<String> {
+        let mut strings = vec![];
+        for ptr in self.metrics.values() {
+            let ptr = ptr.load(Ordering::Relaxed);
+            // SAFETY: pointer is valid because metrics on drop removed from registry via RwLock
+            let metric = unsafe { &*ptr };
+            let value = &metric.value;
+            let key = &metric.key;
+            let value = (value * 100_000_000.0).round() / 100_000_000.0;
+            strings.push(format!("{key} {value}"));
+        }
+        strings
+    }
 }
 
 struct MyMetrics {
